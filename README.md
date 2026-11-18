@@ -145,21 +145,6 @@ Pixora focuses on:
 - Responsive image gallery
 - Smooth modal interactions
 
-## 🔮 Future Improvements
-
-Potential features for future development:
-
-- [ ] User authentication and profiles
-- [ ] Upload and manage photographs
-- [ ] Search photographs by title or photographer
-- [ ] Filter photographs by category
-- [ ] Like and bookmark photographs
-- [ ] Photo comments
-- [ ] Photographer profile pages
-- [ ] Pagination or infinite scrolling
-- [ ] Backend API integration
-- [ ] Database integration
-
 ## 🌐 Live Demo
 
 Live URL: https://pixora-jalal007.vercel.app

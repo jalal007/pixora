@@ -6,7 +6,7 @@ export default function Logo() {
     <Link href="/">
       <Image
         className="max-w-[100px] md:max-w-[165px]"
-        src="/lws-logo.png"
+        src="/pixora-logo.png"
         alt="logo"
         width={180}
         height={38}
