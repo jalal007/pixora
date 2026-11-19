@@ -2,32 +2,51 @@ import { NextResponse } from "next/server";
 import { match } from "@formatjs/intl-localematcher";
 import Negotiator from "negotiator";
 
-let defaultLocale = "en";
-let locales = ["bn", "en"];
+const defaultLocale = "en";
+const locales = ["bn", "en"];
 
 function getLocale(request) {
-  const acceptedLanguage = request.headers.get("accept-language") ?? undefined;
-  let headers = { "accept-language": acceptedLanguage };
-  let languages = new Negotiator({ headers }).languages();
-  return match(languages, locales, defaultLocale);
+  const acceptedLanguage =
+    request.headers.get("accept-language") || defaultLocale;
+
+  const headers = {
+    "accept-language": acceptedLanguage,
+  };
+
+  const languages = new Negotiator({ headers }).languages();
+
+  try {
+    return match(languages, locales, defaultLocale);
+  } catch (error) {
+    console.error("Locale detection failed:", error);
+    return defaultLocale;
+  }
 }
 
 export function middleware(request) {
   const pathname = request.nextUrl.pathname;
-  const pathnameIsMissingLocale = locales.every(
-    (locale) =>
-      !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`,
+
+  // Check whether the URL already contains a supported locale
+  const pathnameHasLocale = locales.some(
+    (locale) => pathname === `/${locale}` || pathname.startsWith(`/${locale}/`),
   );
 
-  // Redirect if there is no locale
-  if (pathnameIsMissingLocale) {
-    const locale = getLocale(request);
-    return NextResponse.redirect(
-      new URL(`/${locale}/${pathname}`, request.url),
-    );
+  // Continue if locale already exists
+  if (pathnameHasLocale) {
+    return NextResponse.next();
   }
+
+  // Detect user's preferred language
+  const locale = getLocale(request);
+
+  // Preserve the original pathname and query parameters
+  const url = request.nextUrl.clone();
+
+  url.pathname = `/${locale}${pathname}`;
+
+  return NextResponse.redirect(url);
 }
 
 export const config = {
-  matcher: ["/((?!api|assets|.*\\..*|_next).*)"],
+  matcher: ["/((?!api|assets|_next/static|_next/image|favicon.ico|.*\\..*).*)"],
 };
