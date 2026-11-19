@@ -2,6 +2,8 @@
 
 A modern and responsive photography gallery application built with **Next.js** and **Tailwind CSS**, where users can explore beautiful photographs and discover the stories behind every frame.
 
+---
+
 ## 🌟 About the Project
 
 **Pixora** is a photography gallery platform designed to showcase beautiful photographs in an elegant and user-friendly interface.
@@ -19,6 +21,8 @@ Each photo detail includes:
 
 The primary goal of Pixora is to create a simple, visually appealing photography discovery experience.
 
+---
+
 ## ✨ Key Features
 
 - **Photography Gallery:** Explore a collection of beautiful photographs.
@@ -30,6 +34,8 @@ The primary goal of Pixora is to create a simple, visually appealing photography
 - **Responsive Design:** Optimized for desktop, tablet, and mobile devices.
 - **Modern UI:** Clean layouts and smooth interactions.
 
+---
+
 ## 🛠️ Technology Stack
 
 | Technology        | Purpose                       |
@@ -40,47 +46,67 @@ The primary goal of Pixora is to create a simple, visually appealing photography
 | JavaScript (ES6+) | Application logic             |
 | Lucide React      | Icons                         |
 
+---
+
 ## 📂 Project Structure
 
 ```text
 pixora/
-├── public/
-│   ├── images/
-│   └── icons/
 │
-├── src/
-│   ├── app/
-│   │   ├── favicon.ico
-│   │   ├── globals.css
-│   │   ├── layout.js
+├── app/
+│   ├── [lang]/
+│   │   ├── (.)photos/
+│   │   │   └── [id]/
+│   │   │       └── page.js
+│   │   │
+│   │   ├── dictionaries/
+│   │   │   ├── bn.json
+│   │   │   └── en.json
+│   │   │
+│   │   ├── photos/
+│   │   │   └── [id]/
+│   │   │       └── page.js
+│   │   │
+│   │   ├── dictionaries.js
 │   │   └── page.js
 │   │
-│   ├── components/
-│   │   ├── common/
-│   │   │   ├── Header.jsx
-│   │   │   └── Footer.jsx
-│   │   │
-│   │   ├── gallery/
-│   │   │   ├── PhotoGallery.jsx
-│   │   │   ├── PhotoCard.jsx
-│   │   │   └── PhotoModal.jsx
-│   │   │
-│   │   └── ui/
-│   │       └── Loading.jsx
+│   ├── api/
+│   │   └── photos/
+│   │       ├── [id]/
+│   │       │   └── route.js
+│   │       └── route.js
 │   │
-│   ├── data/
-│   │   └── photos.js
-│   │
-│   └── utils/
-│       └── helpers.js
+│   ├── fonts/
+│   ├── favicon.ico
+│   ├── globals.css
+│   └── layout.js
+│
+├── components/
+│   ├── LanguageSwitcher.jsx
+│   ├── Logo.jsx
+│   ├── Modal.jsx
+│   ├── Navbar.jsx
+│   ├── PhotoCard.jsx
+│   ├── PhotoDetails.jsx
+│   └── PhotoList.jsx
+│
+├── public/
+│   └── images/
+|
+├── lib/
+│   └── data.js
 │
 ├── .gitignore
 ├── jsconfig.json
-├── next.config.js
+├── middleware.js
+├── next.config.mjs
 ├── package.json
+├── package-lock.json
 ├── postcss.config.mjs
 └── README.md
 ```
+
+---
 
 ## 🚀 Getting Started
 
@@ -126,6 +152,8 @@ Visit:
 http://localhost:3000
 ```
 
+---
+
 ## 📷 How It Works
 
 1. Open Pixora and explore the photography gallery.
@@ -133,6 +161,8 @@ http://localhost:3000
 3. Click on any photograph to open its details modal.
 4. Explore the photographer information, photo description, views, likes, and upload date.
 5. Use the share option to share your favorite photograph.
+
+---
 
 ## 🎨 UI & Design
 
@@ -145,6 +175,8 @@ Pixora focuses on:
 - Responsive image gallery
 - Smooth modal interactions
 
+---
+
 ## 🌐 Live Demo
 
 Live URL: https://pixora-jalal007.vercel.app
@@ -152,7 +184,9 @@ Live URL: https://pixora-jalal007.vercel.app
 ## 📸 Screenshots
 
 ![Homepage](./screenshots/homepage.png)
-![Photo Details Modal](./screenshots/photo-modal.png)
+![Photo Details Modal](./screenshots/photo-details.png)
+
+---
 
 ## 🤝 Contributing
 
@@ -160,16 +194,33 @@ Contributions, suggestions, and feature requests are welcome.
 
 If you have suggestions to improve Pixora, feel free to open an issue or submit a pull request.
 
+---
+
 ## 📄 License
 
 This project is developed for learning and portfolio purposes.
 
 ---
 
-<div align="center">
+## Acknowledgements
 
-**Pixora — Discover Moments, Explore Stories.** 📸
+Special thanks to the developers and communities behind the technologies used in this project.
 
-Made with ❤️ using Next.js and Tailwind CSS.
+- [Next.js Documentation](https://nextjs.org/docs)
+- [React Documentation](https://react.dev/learn)
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
+- [MDN Web Docs](https://developer.mozilla.org/)
 
-</div>
+---
+
+## Author
+
+**Jalal Ahamad**
+
+Senior Software Engineer (Frontend)
+
+- GitHub: [@jalal007](https://github.com/jalal007)
+
+---
+
+⭐ If you find CareerHub useful, consider giving this repository a star!
