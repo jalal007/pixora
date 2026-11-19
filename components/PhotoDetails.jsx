@@ -3,7 +3,7 @@ import { getDictionary } from "@/app/[lang]/dictionaries";
 import Image from "next/image";
 
 const PhotoDetails = async ({ id, lang }) => {
-  const response = await fetch(`${process.env.BASE_API_URL}/photos/${id}`);
+  const response = await fetch(`${process.env.BASE_API_URL}/api/photos/${id}`);
   const photo = await response.json();
 
   const dictionary = await getDictionary(lang);
