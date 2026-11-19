@@ -14,30 +14,31 @@ const LanguageSwitcher = () => {
 
   const languages = [
     {
-      'code': 'en',
-      'language': 'English'
+      code: "en",
+      language: "English",
+      flag: "/usa.png",
     },
     {
-      'code': 'bn',
-      'language': 'Bangla'
-    }
-  ]
-  const found = languages.find(lang => pathname.includes(lang.code));
-  const [selectedLanguage, setSelectedLanguage] = useState(found ?? languages[0]);
+      code: "bn",
+      language: "Bangla",
+      flag: "/bd.png",
+    },
+  ];
+  const found = languages.find((lang) => pathname.includes(lang.code));
+  const [selectedLanguage, setSelectedLanguage] = useState(
+    found ?? languages[0],
+  );
   const [showManu, setShowManu] = useState(false);
 
-
-
-
-  const handleLanguageChange = lang => {
-    /* let path = pathname;
-    if (pathname.includes(selectedLanguage.code)) {
-      path = pathname.replace(selectedLanguage.code, lang);
-    } */
-    setSelectedLanguage({...selectedLanguage, code: lang, language: lang === 'en' ? 'English' : 'Bangla'});
+  const handleLanguageChange = (lang) => {
+    setSelectedLanguage({
+      ...selectedLanguage,
+      code: lang,
+      language: lang === "en" ? "English" : "Bangla",
+    });
     setShowManu(false);
-    router.push(`/${lang}`)
-  }
+    router.push(`/${lang}`);
+  };
 
   return (
     <div className="flex gap-4 items-center">
@@ -48,33 +49,32 @@ const LanguageSwitcher = () => {
         >
           <Image
             className="max-w-8"
-            src="/bd.png"
-            alt="bangla"
+            src={selectedLanguage.flag}
+            alt={`${selectedLanguage.language} flag`}
             height={100}
             width={165}
           />
           {selectedLanguage.language}
         </button>
+
         {showManu && (
           <div className="absolute right-0 top-full mt-2 w-40 rounded-md bg-white p-2 z-10 shadow-lg">
-            {
-              languages.map(entry => (
-                <li
-                  key={entry.code}
-                  onClick={() => handleLanguageChange(entry.code)}
-                  className="flex items-center gap-2 p-2 rounded-md cursor-pointer hover:bg-gray-100"
-                >
-                  <Image
-                    className="max-w-8"
-                    src="/bd.png"
-                    alt="bangla"
-                    height={100}
-                    width={165}
-                  />
-                  {entry.language}
-                </li>
-              ))
-            }
+            {languages.map((entry) => (
+              <li
+                key={entry.code}
+                onClick={() => handleLanguageChange(entry.code)}
+                className="flex items-center gap-2 p-2 rounded-md cursor-pointer hover:bg-gray-100"
+              >
+                <Image
+                  className="max-w-8"
+                  src={entry.flag}
+                  alt={`${entry.language} flag`}
+                  height={100}
+                  width={165}
+                />
+                {entry.language}
+              </li>
+            ))}
           </div>
         )}
       </div>
